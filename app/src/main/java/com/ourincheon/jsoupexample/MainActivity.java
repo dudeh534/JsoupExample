@@ -22,7 +22,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     TextView tv;
     String test;
-
+    List<String> list = new ArrayList<String>();
 /*1. File > Project Structure 선택
 2. 상단의 + 선택
 3. Import .JAR or .AAR Package 선택
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         .get();
                 Elements parseLine = doc.select("[color]");//color로 parse한 것을 Element에 넣었다
                 Map<String, String> mapData = new HashMap<String, String>();
-                List<String> list = new ArrayList<String>();
+
                 for(Element e : parseLine){
                     list.add(e.text());
                 }
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            tv.setText(test);//이렇게 해도 되네? 메인 스레드가 아닌 곳에서는 안된다고 하더니
+            tv.setText(list.get(5));//이렇게 해도 되네? 메인 스레드가 아닌 곳에서는 안된다고 하더니
         }
     }
     /*AsyncTask는 UI 처리 및 Background 작업 등 을 하나의 클래스에서 작업 할 수 있게 지원해 줍니다.
